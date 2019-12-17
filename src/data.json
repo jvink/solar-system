@@ -1,0 +1,84 @@
+{
+  "planets": [
+    {
+      "name": "Mercury",
+      "perihelion": 46.0,
+      "aphelion": 69.8,
+      "mass": 0.33,
+      "temperature": 167,
+	  "diameter": 4879,
+	  "color": "#bdc3c7",
+	  "image": "./mercury.jpg"
+    },
+    {
+      "name": "Venus",
+      "perihelion": 107.5,
+      "aphelion": 108.9,
+      "mass": 4.87,
+      "temperature": 464,
+      "diameter": 12104,
+	  "color": "#e67e22",
+	  "image": "./venus.jpg"
+    },
+    {
+      "name": "Earth",
+      "perihelion": 147.1,
+      "aphelion": 152.1,
+      "mass": 5.97,
+      "temperature": 15,
+      "diameter": 12756,
+	  "color": "#1e3799",
+	  "image": "./earth.jpg"
+    },
+    {
+      "name": "Mars",
+      "perihelion": 206.6,
+      "aphelion": 249.2,
+      "mass": 0.642,
+      "temperature": -65,
+      "diameter": 6792,
+	  "color": "#e58e26",
+	  "image": "./mars.jpg"
+    },
+    {
+      "name": "Jupiter",
+      "perihelion": 740.5,
+      "aphelion": 816.6,
+      "mass": 1898,
+      "temperature": -110,
+      "diameter": 142984,
+	  "color": "#D6CFBA",
+	  "image": "./jupiter.jpg"
+    },
+    {
+      "name": "Saturn",
+      "perihelion": 1352.6,
+      "aphelion": 1514.5,
+      "mass": 568,
+      "temperature": -140,
+      "diameter": 120536,
+	  "color": "#CBB272",
+	  "image": "./saturn.jpg"
+    },
+    {
+      "name": "Uranus",
+      "perihelion": 2741.3,
+      "aphelion": 3003.6,
+      "mass": 86.8,
+      "temperature": -195,
+      "diameter": 51118,
+	  "color": "#81ecec",
+	  "image": "./uranus.jpg"
+    },
+    {
+      "name": "Neptune",
+      "perihelion": 4495.1,
+      "aphelion": 4444.5,
+      "mass": 102,
+      "temperature": -200,
+      "diameter": 49528,
+	  "color": "#2980b9",
+	  "image": "./neptune.jpg"
+    }
+  ]
+}
