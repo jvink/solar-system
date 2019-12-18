@@ -15,6 +15,7 @@ const Controls = props => {
 function Planet(props) {
 	const group = useRef();
 	const mesh = useRef();
+
 	const size = [props.diameter / 150000, 32, 32];
 	const [texture] = useLoader(THREE.TextureLoader, [`planets/${props.image}`]);
 
@@ -22,29 +23,28 @@ function Planet(props) {
 	const x = Math.cos(randomAngle) * props.aphelion;
 	const z = Math.sin(randomAngle) * props.aphelion;
 
-	const position = useMemo(() => {
-		return [x / 50, 0, z / 50];
-	}, [x, z]);
+	const position = useMemo(() => [x / 50, 0, z / 50], [x, z]);
 
 	useFrame(() => {
 		group.current.rotation.y += 1 / props.orbitalPeriod;
-		mesh.current.rotation.y += 1 / props.dayLength;
+		mesh.current.rotation.y += 1 / props.rotationPeriod;
 	});
-
+	
 	return (
 		<group ref={group}>
 			<mesh
 				ref={mesh}
 				position={position}
+				rotation={new THREE.Euler(props.axialTilt, 0, 0)}
 				castShadow>
 				<sphereBufferGeometry attach="geometry" args={size} />
 				<meshStandardMaterial attach="material" map={texture} roughness={1} />
 			</mesh>
 			{props.name === "Saturn" && <mesh
-				rotation={[Math.PI / 2, 0, 0]}
+				rotation={new THREE.Euler(props.axialTilt + 1.5707963, 0, 0)}
 				castShadow
 				position={position}>
-				<ringBufferGeometry attach="geometry" args={[1.2, 1, 32, 5, 0, Math.PI * 2]} />
+				<ringBufferGeometry attach="geometry" args={[1.4, 1, 32]} />
 				<meshStandardMaterial attach="material" side={THREE.DoubleSide} color={props.color} />
 			</mesh>}
 		</group>
@@ -66,13 +66,13 @@ function Sun() {
 
 export function App() {
 	return (
-		<Canvas shadowMap camera={{ position: [0, 0, 3] }}>
+		<Canvas shadowMap>
 			<ambientLight intensity={0.2} />
 			<Controls
 				enableZoom={true}
 				enableDamping
-				dampingFactor={0.5}
-				rotateSpeed={0.5}
+				dampingFactor={0.2}
+				rotateSpeed={0.2}
 			/>
 			<Suspense fallback={null}>
 				<Sun />
