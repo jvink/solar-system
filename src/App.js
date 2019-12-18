@@ -45,7 +45,7 @@ function Planet(props) {
 				castShadow
 				position={position}>
 				<ringBufferGeometry attach="geometry" args={[1.2, 1, 32, 5, 0, Math.PI * 2]} />
-				<meshStandardMaterial attach="material" color={props.color} />
+				<meshStandardMaterial attach="material" side={THREE.DoubleSide} color={props.color} />
 			</mesh>}
 		</group>
 	);
