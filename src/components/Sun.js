@@ -10,7 +10,7 @@ export default function Sun() {
 		<mesh position={[0, 0, 0]}>
 			<sphereBufferGeometry attach='geometry' args={size} />
 			<meshBasicMaterial attach='material' map={texture} fog={false} />
-			<pointLight castShadow distance={6100} color='white' />
+			<pointLight castShadow color='white' />
 		</mesh>
 	);
 }

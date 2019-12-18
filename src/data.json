@@ -82,7 +82,17 @@
       "orbitalPeriod": 10747,
       "orbitalInclination": 0.0436332,
       "rotationPeriod": 10.7,
-      "axialTilt": 0.4660029
+	  "axialTilt": 0.4660029,
+	  "rings": [
+		  {
+			  "max": 300000,
+			  "min": 240000
+		  },
+		  {
+			  "max": 230000,
+			  "min": 180000
+		  }
+	  ]
     },
     {
       "name": "Uranus",

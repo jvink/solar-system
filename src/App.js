@@ -16,7 +16,7 @@ const Controls = props => {
 
 export function App() {
 	const SIZE_SCALE = 0.0000075;
-	const DISTANCE_SCALE = 0.02;
+	const DISTANCE_SCALE = 0.15;
 
 	return (
 		<Canvas shadowMap>

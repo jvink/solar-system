@@ -23,25 +23,25 @@ export default function Planet(props) {
 				ref={mesh}
 				position={position}
 				rotation={new THREE.Euler(props.axialTilt, 0, 0)}
-				castShadow>
+				castShadow
+				receiveShadow>
 				<sphereBufferGeometry attach='geometry' args={size} />
 				<meshStandardMaterial attach='material' map={texture} roughness={1} />
 			</mesh>
-			{props.name === 'Saturn' && <>
-				<mesh
-					rotation={new THREE.Euler(props.axialTilt + 1.5707963, 0, 0)}
-					position={position}
-					receiveShadow>
-					<ringBufferGeometry attach='geometry' args={[2, 1.7, 32]} />
-					<meshStandardMaterial attach='material' side={THREE.DoubleSide} color={props.color} />
-				</mesh>
-				<mesh
-					rotation={new THREE.Euler(props.axialTilt + 1.5707963, 0, 0)}
-					position={position}>
-					<ringBufferGeometry attach='geometry' args={[1.66, 1.3, 32]} />
-					<meshStandardMaterial attach='material' side={THREE.DoubleSide} color={props.color} />
-				</mesh>
-			</>}
+			{props.rings && props.rings.map((ring, index) => {
+				const NINETY_DEGREES_IN_EULER = 1.5707963;
+
+				return (
+					<mesh
+						key={index}
+						rotation={new THREE.Euler(props.axialTilt + NINETY_DEGREES_IN_EULER, 0, 0)}
+						position={position}
+						receiveShadow>
+						<ringBufferGeometry attach='geometry' args={[ring.max * props.SIZE_SCALE, ring.min * props.SIZE_SCALE, 32]} />
+						<meshPhysicalMaterial attach='material' side={THREE.DoubleSide} color={props.color} />
+					</mesh>
+				)
+			})}
 		</group>
 	);
 }
