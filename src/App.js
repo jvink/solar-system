@@ -40,6 +40,13 @@ function Planet(props) {
 				<sphereBufferGeometry attach="geometry" args={size} />
 				<meshStandardMaterial attach="material" map={texture} roughness={1} />
 			</mesh>
+			{props.name === "Saturn" && <mesh
+				rotation={[Math.PI / 2, 0, 0]}
+				castShadow
+				position={position}>
+				<ringBufferGeometry attach="geometry" args={[1.2, 1, 32, 5, 0, Math.PI * 2]} />
+				<meshStandardMaterial attach="material" color={props.color} />
+			</mesh>}
 		</group>
 	);
 }
@@ -62,8 +69,6 @@ export function App() {
 		<Canvas shadowMap camera={{ position: [0, 0, 3] }}>
 			<ambientLight intensity={0.2} />
 			<Controls
-				autoRotate
-				enablePan={false}
 				enableZoom={true}
 				enableDamping
 				dampingFactor={0.5}
