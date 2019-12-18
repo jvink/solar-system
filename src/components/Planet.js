@@ -7,14 +7,16 @@ export default function Planet(props) {
 	const group = useRef();
 	const mesh = useRef();
 
-	const size = [props.diameter * props.SIZE_SCALE, 32, 32];
+	const size = props.realisticScale ? [props.diameter * props.SIZE_SCALE, 32, 32] : [1, 32, 32];
 	const [texture] = useLoader(THREE.TextureLoader, [`planets/${props.image}`]);
 
-	const position = getPosition(props.aphelion, props.RANDOM_ANGLE, props.DISTANCE_SCALE);
+	const position = getPosition(props.realisticScale ? props.aphelion : (props.index * 100), props.realisticScale ? props.RANDOM_ANGLE : 0, props.DISTANCE_SCALE, props.DISTANCE_OFFSET);
 
 	useFrame(() => {
-		group.current.rotation.y += 1 / props.orbitalPeriod;
-		mesh.current.rotation.y += 1 / props.rotationPeriod;
+		if (props.realisticScale) {
+			group.current.rotation.y += 1 / props.orbitalPeriod;
+			mesh.current.rotation.y += 1 / props.rotationPeriod;
+		}
 	});
 
 	return (
@@ -23,10 +25,10 @@ export default function Planet(props) {
 				ref={mesh}
 				position={position}
 				rotation={new THREE.Euler(props.axialTilt, 0, 0)}
-				castShadow
-				receiveShadow>
+				castShadow={props.realisticScale}
+				receiveShadow={props.realisticScale}>
 				<sphereBufferGeometry attach='geometry' args={size} />
-				<meshStandardMaterial attach='material' map={texture} roughness={1} />
+				<meshStandardMaterial attach='material' map={texture} />
 			</mesh>
 			{props.rings && props.rings.map((ring, index) => {
 				const NINETY_DEGREES_IN_EULER = 1.5707963;
