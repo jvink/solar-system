@@ -31,7 +31,7 @@ function Planet(props) {
 	});
 	
 	return (
-		<group ref={group}>
+		<group ref={group} rotation={new THREE.Euler(props.orbitalInclination, 0, 0)}>
 			<mesh
 				ref={mesh}
 				position={position}
