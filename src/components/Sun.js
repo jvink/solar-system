@@ -1,5 +1,5 @@
-import React from "react";
-import { useLoader } from "react-three-fiber";
+import React from 'react';
+import { useLoader } from 'react-three-fiber';
 import * as THREE from 'three';
 
 export default function Sun() {
@@ -8,9 +8,9 @@ export default function Sun() {
 
 	return (
 		<mesh position={[0, 0, 0]}>
-			<sphereBufferGeometry attach="geometry" args={size} />
-			<meshBasicMaterial attach="material" map={texture} fog={false} />
-			<pointLight distance={6100} color="white" />
+			<sphereBufferGeometry attach='geometry' args={size} />
+			<meshBasicMaterial attach='material' map={texture} fog={false} />
+			<pointLight castShadow distance={6100} color='white' />
 		</mesh>
 	);
 }
