@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/solar-system/static/css/main.6e6f6b4f.chunk.css",
-    "main.js": "/solar-system/static/js/main.6c2e0c18.chunk.js",
-    "main.js.map": "/solar-system/static/js/main.6c2e0c18.chunk.js.map",
+    "main.css": "/solar-system/static/css/main.1c9d8446.chunk.css",
+    "main.js": "/solar-system/static/js/main.edbe2340.chunk.js",
+    "main.js.map": "/solar-system/static/js/main.edbe2340.chunk.js.map",
     "runtime-main.js": "/solar-system/static/js/runtime-main.27e92ecf.js",
     "runtime-main.js.map": "/solar-system/static/js/runtime-main.27e92ecf.js.map",
-    "static/js/2.5703e735.chunk.js": "/solar-system/static/js/2.5703e735.chunk.js",
-    "static/js/2.5703e735.chunk.js.map": "/solar-system/static/js/2.5703e735.chunk.js.map",
+    "static/js/2.76c6e348.chunk.js": "/solar-system/static/js/2.76c6e348.chunk.js",
+    "static/js/2.76c6e348.chunk.js.map": "/solar-system/static/js/2.76c6e348.chunk.js.map",
     "index.html": "/solar-system/index.html",
-    "precache-manifest.daffcb936173b044177144e5c7ad53c9.js": "/solar-system/precache-manifest.daffcb936173b044177144e5c7ad53c9.js",
+    "precache-manifest.e0080f441d9ee7f5ed5ab6388b028796.js": "/solar-system/precache-manifest.e0080f441d9ee7f5ed5ab6388b028796.js",
     "service-worker.js": "/solar-system/service-worker.js",
-    "static/css/main.6e6f6b4f.chunk.css.map": "/solar-system/static/css/main.6e6f6b4f.chunk.css.map",
-    "static/js/2.5703e735.chunk.js.LICENSE": "/solar-system/static/js/2.5703e735.chunk.js.LICENSE"
+    "static/css/main.1c9d8446.chunk.css.map": "/solar-system/static/css/main.1c9d8446.chunk.css.map",
+    "static/js/2.76c6e348.chunk.js.LICENSE": "/solar-system/static/js/2.76c6e348.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.27e92ecf.js",
-    "static/js/2.5703e735.chunk.js",
-    "static/css/main.6e6f6b4f.chunk.css",
-    "static/js/main.6c2e0c18.chunk.js"
+    "static/js/2.76c6e348.chunk.js",
+    "static/css/main.1c9d8446.chunk.css",
+    "static/js/main.edbe2340.chunk.js"
   ]
 }
