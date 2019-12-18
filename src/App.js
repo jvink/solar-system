@@ -1,33 +1,52 @@
-import React, { useRef, Suspense, useState, useEffect } from "react";
-import { Canvas, useThree, useLoader, useFrame } from "react-three-fiber";
+import React, { useRef, Suspense, useMemo } from "react";
+import { Canvas, useLoader, useFrame, extend, useThree, useRender } from "react-three-fiber";
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import * as THREE from 'three';
 import data from './data.json';
 
-function Planet(props) {
+extend({ OrbitControls })
+const Controls = props => {
+	const { gl, camera } = useThree();
 	const ref = useRef();
-	const position = [0, 0, props.aphelion / 100];
+	useRender(() => ref.current.update());
+	return <orbitControls ref={ref} args={[camera, gl.domElement]} {...props} />;
+};
+
+function Planet(props) {
+	const group = useRef();
+	const mesh = useRef();
 	const size = [props.diameter / 150000, 32, 32];
 	const [texture] = useLoader(THREE.TextureLoader, [`planets/${props.image}`]);
-	console.log(size);
-	
+
+	const randomAngle = Math.random() * Math.PI * 2;
+	const x = Math.cos(randomAngle) * props.aphelion;
+	const z = Math.sin(randomAngle) * props.aphelion;
+
+	const position = useMemo(() => {
+		return [x / 50, 0, z / 50];
+	}, [x, z]);
+
 	useFrame(() => {
-		ref.current.rotation.y += 0.01;
+		group.current.rotation.y += 1 / props.orbitalPeriod;
+		mesh.current.rotation.y += 1 / props.dayLength;
 	});
 
 	return (
-		<mesh
-			ref={ref}
-			position={position}
-			castShadow>
-			<sphereBufferGeometry attach="geometry" args={size} />
-			<meshStandardMaterial attach="material" map={texture} roughness={1} />
-		</mesh>
+		<group ref={group}>
+			<mesh
+				ref={mesh}
+				position={position}
+				castShadow>
+				<sphereBufferGeometry attach="geometry" args={size} />
+				<meshStandardMaterial attach="material" map={texture} roughness={1} />
+			</mesh>
+		</group>
 	);
 }
 
 function Sun() {
 	const [texture] = useLoader(THREE.TextureLoader, [`planets/sun.jpg`]);
-	const size = [1392530 / 150000, 32, 32];
+	const size = [1392530 / 2500000, 32, 32];
 
 	return (
 		<mesh position={[0, 0, 0]}>
@@ -38,54 +57,22 @@ function Sun() {
 	);
 }
 
-function Camera({ selected }) {
-	const { camera } = useThree();
-
-	useEffect(() => {
-		camera.fov = 40;
-		camera.position.set(data.planets[selected].diameter / 36000, 0, data.planets[selected].aphelion / 100);
-		camera.lookAt(0, 0, data.planets[selected].aphelion / 100);
-		camera.updateProjectionMatrix();
-	}, [camera, selected]);
-
-	return (
-		<mesh position={[2, 2, 2]}>
-			<camera />
-		</mesh>
-	);
-}
-
 export function App() {
-	const [selected, setSelected] = useState(2);
-
 	return (
-		<>
-			{!(selected === (data.planets.length - 1)) && <div style={{
-				position: "absolute",
-				top: "50%",
-				transform: "translateY(-50%)",
-				zIndex: 10
-			}}>
-				<h4 style={{ color: "#fff", margin: "1em" }} onClick={() => setSelected(selected + 1)}>{data.planets[selected + 1].name}</h4>
-			</div>}
-			{!(selected === 0) && <div style={{
-				position: "absolute",
-				top: "50%",
-				right: 0,
-				transform: "translateY(-50%)",
-				visibility: selected === 0 ? "hidden" : "visible",
-				zIndex: 10
-			}}>
-				<h4 style={{ color: "#fff", margin: "1em" }} onClick={() => setSelected(selected - 1)}>{data.planets[selected - 1].name}</h4>
-			</div>}
-			<Canvas shadowMap>
-				<ambientLight intensity={0.5} />
-				<Camera selected={selected} />
-				<Suspense fallback={null}>
-					<Sun />
-					{data.planets.map((planet, index) => <Planet {...planet} index={index} key={planet.name} />)}
-				</Suspense>
-			</Canvas>
-		</>
+		<Canvas shadowMap camera={{ position: [0, 0, 3] }}>
+			<ambientLight intensity={0.2} />
+			<Controls
+				autoRotate
+				enablePan={false}
+				enableZoom={true}
+				enableDamping
+				dampingFactor={0.5}
+				rotateSpeed={0.5}
+			/>
+			<Suspense fallback={null}>
+				<Sun />
+				{data.planets.map((planet, index) => <Planet {...planet} index={index} key={planet.name} />)}
+			</Suspense>
+		</Canvas>
 	);
 }

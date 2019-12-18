@@ -8,7 +8,9 @@
       "temperature": 167,
 	  "diameter": 4879,
 	  "color": "#bdc3c7",
-	  "image": "./mercury.jpg"
+	  "image": "./mercury.jpg",
+	  "orbitalPeriod": 88.0,
+	  "dayLength": 4222.6
     },
     {
       "name": "Venus",
@@ -18,7 +20,9 @@
       "temperature": 464,
       "diameter": 12104,
 	  "color": "#e67e22",
-	  "image": "./venus.jpg"
+	  "image": "./venus.jpg",
+	  "orbitalPeriod": 224.7,
+	  "dayLength": 2802.0
     },
     {
       "name": "Earth",
@@ -28,7 +32,9 @@
       "temperature": 15,
       "diameter": 12756,
 	  "color": "#1e3799",
-	  "image": "./earth.jpg"
+	  "image": "./earth.jpg",
+	  "orbitalPeriod": 365.2,
+	  "dayLength": 24.0
     },
     {
       "name": "Mars",
@@ -38,7 +44,9 @@
       "temperature": -65,
       "diameter": 6792,
 	  "color": "#e58e26",
-	  "image": "./mars.jpg"
+	  "image": "./mars.jpg",
+	  "orbitalPeriod": 687.0,
+	  "dayLength": 24.7
     },
     {
       "name": "Jupiter",
@@ -48,7 +56,9 @@
       "temperature": -110,
       "diameter": 142984,
 	  "color": "#D6CFBA",
-	  "image": "./jupiter.jpg"
+	  "image": "./jupiter.jpg",
+	  "orbitalPeriod": 4331,
+	  "dayLength": 9.9
     },
     {
       "name": "Saturn",
@@ -58,7 +68,9 @@
       "temperature": -140,
       "diameter": 120536,
 	  "color": "#CBB272",
-	  "image": "./saturn.jpg"
+	  "image": "./saturn.jpg",
+	  "orbitalPeriod": 10747,
+	  "dayLength": 10.7
     },
     {
       "name": "Uranus",
@@ -68,7 +80,9 @@
       "temperature": -195,
       "diameter": 51118,
 	  "color": "#81ecec",
-	  "image": "./uranus.jpg"
+	  "image": "./uranus.jpg",
+	  "orbitalPeriod": 30589,
+	  "dayLength": 17.2
     },
     {
       "name": "Neptune",
@@ -78,7 +92,9 @@
       "temperature": -200,
       "diameter": 49528,
 	  "color": "#2980b9",
-	  "image": "./neptune.jpg"
+	  "image": "./neptune.jpg",
+	  "orbitalPeriod": 59800,
+	  "dayLength": 16.1
     }
   ]
 }
